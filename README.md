@@ -1,1 +1,2 @@
-# ft_printf
+# 42 school project
+# recreate the function printf

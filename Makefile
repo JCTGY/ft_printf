@@ -12,6 +12,7 @@ PF_SRC = printf.c \
 		 pr_char.c \
 		 pr_output.c \
 		 pr_integer.c \
+		 pr_uninteger.c \
 
 LIBFT_SRC = ft_bzero.c \
 			ft_isdigit.c \

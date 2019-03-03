@@ -6,7 +6,7 @@
 /*   By: jchiang- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/15 17:48:20 by jchiang-          #+#    #+#             */
-/*   Updated: 2019/03/01 13:41:28 by jchiang-         ###   ########.fr       */
+/*   Updated: 2019/03/02 13:59:11 by jchiang-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,8 @@ int					printf_string(t_printf *p);
 int					printf_character(t_printf *p);
 int					printf_integer(t_printf *p);
 int					printf_nbr(intmax_t nb, t_printf *p);
+int					printf_uninbr(uintmax_t nb, int base, t_printf *p);
+int					printf_unsigned_int(t_printf *p, int base);
 int					pr_wildcard(t_printf *p);
 
 #endif

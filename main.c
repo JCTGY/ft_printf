@@ -6,7 +6,7 @@
 /*   By: jchiang- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 12:07:52 by jchiang-          #+#    #+#             */
-/*   Updated: 2019/03/01 20:21:03 by jchiang-         ###   ########.fr       */
+/*   Updated: 2019/03/02 16:15:22 by jchiang-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,22 +17,18 @@ int		main(void)
 //	char		s[10] = "Hello Word";
 //	char		c = 'c';
 //	char		b = 'b'; 
-	int		d = 15;
-	char	*str = NULL;
+	int		d = 255;
+//	char	*str = NULL;
 	
-	str = ft_itoa_base(1, 2, d);
 //	c = 'c';
 //	b = 'b';
 //	ft_printf("||%08s||\n", s);
 //	putchar('\n');
-//	printf("||%08s||\n", s);
-//	ft_printf("%10c\n");
+	printf("||%5p||\n", &d);
+	ft_printf("||%5p||\n", &d);
 //	putchar('\n');
 //
-	printf("%s\n", str);
-	free(str);
-	str = NULL;
-//	printf("%s\n", ft_itoa_base(1, 16, d));
+//	printf("%s\n", str);
 	while (1) {}
 	return (0);
 }

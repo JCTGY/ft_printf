@@ -6,7 +6,7 @@
 /*   By: jchiang- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 14:37:50 by jchiang-          #+#    #+#             */
-/*   Updated: 2019/03/01 20:27:42 by jchiang-         ###   ########.fr       */
+/*   Updated: 2019/03/02 14:27:53 by jchiang-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ char	*ft_itoa_base(int c, int base, intmax_t nb)
 
 	if (base < 2 || base > 16 || !nb)
 		return (0);
-	if (base == 10)
-		return (ft_itoa(nb));
 	len = ft_count_digit(nb, base);
 	s = ft_strnew(len);
 	b = ft_strnew(16);

@@ -6,7 +6,7 @@
 /*   By: jchiang- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/28 08:40:25 by jchiang-          #+#    #+#             */
-/*   Updated: 2019/03/01 10:21:08 by jchiang-         ###   ########.fr       */
+/*   Updated: 2019/03/02 13:03:52 by jchiang-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,8 @@ int			printf_integer(t_printf *p)
 	(p->lf & L_LLO) &&
 		(printf_nbr(va_arg(p->va, long long), p));
 	(p->lf & L_LO) && (printf_nbr(va_arg(p->va, long), p));
-	(p->lf & L_HH || p->lf & L_H || !p->lf) &&
-		(printf_nbr(va_arg(p->va, int), p));
+	(p->lf & L_HH) && (printf_nbr((char)va_arg(p->va, int), p));
+	(p->lf & L_H) && (printf_nbr((short)va_arg(p->va, int), p));
+	(!p->lf) && (printf_nbr(va_arg(p->va, int), p));
 	return (1);
 }

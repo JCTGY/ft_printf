@@ -61,25 +61,25 @@ static int		pr_wid_pre(t_printf *p)
 
 static int		pr_len_fl(t_printf *p)
 {
-	if (p->lf != 0)
-		return (0);
+	(p->lf != 0) && p->format++;
 	if (*p->format != 'h' && *p->format != 'l' && *p->format != 'L')
 		return (0);
 	p->lf = ((*p->format == 'h') && *(p->format + 1) != 'h')
 			? p->lf |= L_H : p->lf;
-	p->lf = ((*p->format == 'h') && *(p->format - 1) == 'h')
+	p->lf = ((*p->format == 'h') && *(p->format + 1) == 'h')
 			? p->lf |= L_HH : p->lf;
 	p->lf = ((*p->format == 'l') && *(p->format + 1) != 'l')
 			? p->lf |= L_LO : p->lf;
-	p->lf = ((*p->format == 'l') && *(p->format - 1) == 'l')
+	p->lf = ((*p->format == 'l') && *(p->format + 1) == 'l')
 			? p->lf |= L_LLO : p->lf;
 	p->lf = (*p->format == 'L') ? p->lf |= L_L : p->lf;
+	p->lf = (*p->format == 'j') ? p->lf |= L_J : p->lf;
 	return (1);
 }
 
 static int		pr_input_con(t_printf *p)
 {
-	if (!(ft_strchr("cspdiuxXf%", *p->format)))
+	if (!(ft_strchr("cspdiuxXf", *p->format)))
 		return (0);
 	p->con = (*p->format == 'c') ? p->con |= CN_C : p->con;
 	p->con = (*p->format == 's') ? p->con |= CN_S : p->con;
@@ -88,7 +88,6 @@ static int		pr_input_con(t_printf *p)
 	p->con = (*p->format == 'i') ? p->con |= CN_I : p->con;
 	p->con = (*p->format == 'u') ? p->con |= CN_U : p->con;
 	p->con = (*p->format == 'f') ? p->con |= CN_F : p->con;
-	p->con = (*p->format == '%') ? p->con |= CN_M : p->con;
 	p->con = (*p->format == 'X') ? p->con |= CN_UX : p->con;
 	p->con = (*p->format == 'x') ? p->con |= CN_LX : p->con;
 	return (1);

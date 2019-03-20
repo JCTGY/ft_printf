@@ -27,6 +27,7 @@
 # define L_LO	(1 << 2)
 # define L_LLO	(1 << 3)
 # define L_L	(1 << 4)
+# define L_J	(1 << 5)
 
 /*
 ** Flags field

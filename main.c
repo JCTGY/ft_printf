@@ -17,18 +17,21 @@ int		main(void)
 //	char		s[10] = "Hello Word";
 //	char		c = 'c';
 //	char		b = 'b'; 
-	int		d = 255;
+//	int		d = -4242;
 //	char	*str = NULL;
 	
 //	c = 'c';
 //	b = 'b';
 //	ft_printf("||%08s||\n", s);
 //	putchar('\n');
-	printf("||%5p||\n", &d);
-	ft_printf("||%5p||\n", &d);
+//	printf("return of printf = %d", printf("||%d||\n", d));
+//	printf("Number of the p.len = %d\n", ft_printf("||%d||\n", d));
+//	ft_printf("%Z\n");
+//	printf("%Z\n");
 //	putchar('\n');
-//
+//	printf("%jx\n", -4294967296);
+	ft_printf("%hhd\n", -128);
+
 //	printf("%s\n", str);
-	while (1) {}
 	return (0);
 }

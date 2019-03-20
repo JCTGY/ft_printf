@@ -12,11 +12,13 @@
 
 #include "libft.h"
 
-int			ft_count_digit(intmax_t nb, int base)
+int			ft_count_digit(uintmax_t nb, int base)
 {
 	int		len;
 
 	len = 0;
+	if (nb == 0)
+		return (1);
 	while (nb)
 	{
 		len++;

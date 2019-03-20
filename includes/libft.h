@@ -47,7 +47,7 @@ size_t				ft_strlen(const char *str);
 void				ft_putuintmax(uintmax_t nb);
 void				ft_putnstr(const char *str, int n);
 int					ft_putnchar(size_t n, char c);
-int					ft_count_digit(intmax_t nb, int base);
-char				*ft_itoa_base(int c, int base, intmax_t nb);
+int					ft_count_digit(uintmax_t nb, int base);
+char				*ft_itoa_base(int c, int base, int len, intmax_t nb);
 
 #endif

@@ -21,7 +21,9 @@ int				pr_output(t_printf *p)
 	(p->con & CN_S) && printf_string(p);
 	(p->con & CN_D || p->con & CN_I) && printf_integer(p);
 	(p->con & CN_U) && printf_unsigned_int(p, 10);
-	(p->con & CN_UX || p->con & CN_LX || p->con & CN_P)
+	(p->con & CN_UX || p->con & CN_LX)
 		&& printf_unsigned_int(p, 16);
+	(p->con & CN_P) && (printf_uninbr\
+			((uintmax_t)va_arg(p->va, void *), 16, p));
 	return (1);
 }

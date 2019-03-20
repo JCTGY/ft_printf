@@ -49,9 +49,8 @@ int				ft_printf(const char *format, ...)
 		if (*p.format == '%')
 		{
 			p.format++;
-			if (!(pr_conversion(&p)))
-				break ;
-			(*p.format != '%') && pr_output(&p);
+			if (pr_conversion(&p))
+				pr_output(&p);
 		}
 		else
 		{

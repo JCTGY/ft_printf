@@ -12,15 +12,13 @@
 
 #include "libft.h"
 
-char	*ft_itoa_base(int c, int base, intmax_t nb)
+char	*ft_itoa_base(int c, int base, int len, intmax_t nb)
 {
 	char	*b;
 	char	*s;
-	int		len;
 
 	if (base < 2 || base > 16 || !nb)
 		return (0);
-	len = ft_count_digit(nb, base);
 	s = ft_strnew(len);
 	b = ft_strnew(16);
 	(c == 1) ? (ft_strcpy(b, "0123456789ABCDEF"))

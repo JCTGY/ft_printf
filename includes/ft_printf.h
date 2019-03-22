@@ -6,7 +6,7 @@
 /*   By: jchiang- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/15 17:48:20 by jchiang-          #+#    #+#             */
-/*   Updated: 2019/03/02 13:59:11 by jchiang-         ###   ########.fr       */
+/*   Updated: 2019/03/22 11:06:26 by jchiang-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # define L_LLO	(1 << 3)
 # define L_L	(1 << 4)
 # define L_J	(1 << 5)
+# define L_Z	(1 << 6)
 
 /*
 ** Flags field
@@ -51,7 +52,8 @@
 # define CN_UX	(1 << 6)
 # define CN_LX	(1 << 7)
 # define CN_F	(1 << 8)
-# define CN_M	(1 << 9)
+# define CN_O	(1 << 9)
+# define CN_UU	(1 << 10)
 
 /*
 ** typedef struct		s_lf
@@ -82,21 +84,23 @@
 ** flg = typed struct for flag
 ** lf = typed struct for lenth
 */
+#pragma pack(8)
 typedef struct		s_printf
 {
-	char			*format;
 	int				con;
-	va_list			va;
-	size_t			len;
 	int				flg;
 	int				lf;
 	int				wid;
 	int				pre;
+	size_t			len;
+	char			*format;
+	va_list			va;
 }					t_printf;
 
 int					count_space(int len, int zero, t_printf *p);
 int					count_digit(intmax_t nb, int base);
 int					count_zero(int len, t_printf *p);
+int					check_mod(t_printf *p);
 int					pr_conversion(t_printf *p);
 int					ft_printf(const char *format, ...);
 int					pr_output(t_printf *p);

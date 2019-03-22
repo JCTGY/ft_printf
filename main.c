@@ -6,7 +6,7 @@
 /*   By: jchiang- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 12:07:52 by jchiang-          #+#    #+#             */
-/*   Updated: 2019/03/02 16:15:22 by jchiang-         ###   ########.fr       */
+/*   Updated: 2019/03/22 10:50:39 by jchiang-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ int		main(void)
 //	char		c = 'c';
 //	char		b = 'b'; 
 //	int		d = -4242;
-//	char	*str = NULL;
+//	char	*str = NULL;	
+	char	c = 0;
 	
 //	c = 'c';
 //	b = 'b';
@@ -30,8 +31,20 @@ int		main(void)
 //	printf("%Z\n");
 //	putchar('\n');
 //	printf("%jx\n", -4294967296);
-	ft_printf("%hhd\n", -128);
-
+//	ft_printf("%hd\n", 42);
+//	printf("%%\n", "test");
+//	ft_printf("%lld\n", 42);
 //	printf("%s\n", str);
+//	printf("|||||%05.d\n", 0);
+//	printf("|||||%0 .5d\n", 0);
+//	printf("|||||%5.0d\n", 0);
+//	printf("********Seperate******\n");
+//	ft_printf("FFFFF%05.d\n", 0);
+//	ft_printf("FFFFF%0 .5d\n", 0);
+//	ft_printf("FFFFF%5.0d\n", 0);
+//	printf("%d\n", ft_printf("%-5.0%\n"));
+//	printf("%d\n", printf("%-5.0%\n"));
+	ft_printf("%c", 0);
+	write(1, &c, 1); 
 	return (0);
 }

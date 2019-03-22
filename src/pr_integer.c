@@ -6,7 +6,7 @@
 /*   By: jchiang- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/28 08:40:25 by jchiang-          #+#    #+#             */
-/*   Updated: 2019/03/02 13:03:52 by jchiang-         ###   ########.fr       */
+/*   Updated: 2019/03/22 10:36:05 by jchiang-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,10 @@ int			printf_nbr(intmax_t nb, t_printf *p)
 	int		len;
 
 	len = (nb < 0) ? ft_count_digit(-nb, 10) : ft_count_digit(nb, 10);
-	zero =  count_zero(len, p);
-	(nb < 0 && p->flg & F_Z && zero > 0) && zero--;
+	zero = ((p->flg & F_D) && !p->pre && !nb) ? 0 : count_zero(len, p);
+	((nb < 0 || (p->flg & F_P) || (p->flg & F_S)) && zero && !p->pre) && zero--;
 	len = (nb < 0 || (p->flg & F_P) || (p->flg & F_S)) ? (len + 1) : len;
+	len = ((p->flg & F_D) && !nb && !p->pre) ? 0 : len;
 	space = count_space(len, zero, p);
 	p->len += (p->wid > (len + zero))
 			? p->wid : (len + zero);
@@ -54,7 +55,8 @@ int			printf_nbr(intmax_t nb, t_printf *p)
 	(nb >= 0 && (p->flg & F_S) && !(p->flg & F_P))
 		&& ft_putchar(' ');
 	ft_putnchar(zero, '0');
-	ft_putuintmax((nb > 0) ? nb : -nb);
+	nb = (nb < 0) ? -nb : nb;
+	((p->flg & F_D) && !p->pre && !nb) ? 1 : ft_putuintmax(nb);
 	(p->flg & F_N) && ft_putnchar(space, ' ');
 	return (0);
 }
@@ -63,12 +65,14 @@ int			printf_integer(t_printf *p)
 {
 	if (p->lf & L_L)
 		return (0);
-	(p->lf & L_LLO) &&
-		(printf_nbr((intmax_t)va_arg(p->va, long long), p));
-	(p->lf & L_LO) && (printf_nbr((intmax_t)va_arg(p->va, long), p));
+	(p->lf & L_LLO) && (printf_nbr((intmax_t)
+				va_arg(p->va, long long int), p));
+	(p->lf & L_LO) && (printf_nbr((intmax_t)
+				va_arg(p->va, long int), p));
 	(p->lf & L_HH) && (printf_nbr((intmax_t)((char)va_arg(p->va, int)), p));
 	(p->lf & L_H) && (printf_nbr((intmax_t)((short)va_arg(p->va, int)), p));
 	(p->lf & L_J) && (printf_nbr((intmax_t)va_arg(p->va, intmax_t), p));
+	(p->lf & L_Z) && (printf_nbr((intmax_t)(va_arg(p->va, ssize_t)), p));
 	(!p->lf) && (printf_nbr(va_arg(p->va, int), p));
 	return (1);
 }

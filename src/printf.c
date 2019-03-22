@@ -6,7 +6,7 @@
 /*   By: jchiang- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/15 17:41:20 by jchiang-          #+#    #+#             */
-/*   Updated: 2019/03/01 10:20:01 by jchiang-         ###   ########.fr       */
+/*   Updated: 2019/03/22 09:55:46 by jchiang-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,6 @@ int				ft_printf(const char *format, ...)
 			ft_putchar(*p.format);
 			p.len++;
 		}
-//		printf("lf == %d\nflag field == %d\n", p.lf, p.flg);
-//		printf("conversion == %d\n",  p.con);
-//		printf("wide == %d\npre == %d\n", p.wid, p.pre);
-//		printf("total print = %zu\n", p.len);
 		p.format++;
 	}
 	va_end(p.va);

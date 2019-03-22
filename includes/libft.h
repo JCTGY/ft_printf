@@ -6,7 +6,7 @@
 /*   By: jchiang- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/27 14:52:53 by jchiang-          #+#    #+#             */
-/*   Updated: 2019/03/01 18:51:39 by jchiang-         ###   ########.fr       */
+/*   Updated: 2019/03/20 18:51:39 by jchiang-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,6 @@ void				ft_putuintmax(uintmax_t nb);
 void				ft_putnstr(const char *str, int n);
 int					ft_putnchar(size_t n, char c);
 int					ft_count_digit(uintmax_t nb, int base);
-char				*ft_itoa_base(int c, int base, int len, intmax_t nb);
+char				*ft_itoa_base(int c, int base, int len, uintmax_t nb);
 
 #endif

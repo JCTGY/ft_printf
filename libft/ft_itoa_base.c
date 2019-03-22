@@ -6,18 +6,18 @@
 /*   By: jchiang- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 14:37:50 by jchiang-          #+#    #+#             */
-/*   Updated: 2019/03/02 14:27:53 by jchiang-         ###   ########.fr       */
+/*   Updated: 2019/03/20 18:50:44 by jchiang-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_itoa_base(int c, int base, int len, intmax_t nb)
+char	*ft_itoa_base(int c, int base, int len, uintmax_t nb)
 {
 	char	*b;
 	char	*s;
 
-	if (base < 2 || base > 16 || !nb)
+	if (base < 2 || base > 16)
 		return (0);
 	s = ft_strnew(len);
 	b = ft_strnew(16);

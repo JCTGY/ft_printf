@@ -6,7 +6,7 @@
 /*   By: jchiang- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/21 14:51:07 by jchiang-          #+#    #+#             */
-/*   Updated: 2019/03/01 13:43:09 by jchiang-         ###   ########.fr       */
+/*   Updated: 2019/03/22 10:26:27 by jchiang-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,9 @@ static int		pr_wid_pre(t_printf *p)
 
 static int		pr_len_fl(t_printf *p)
 {
-	(p->lf != 0) && p->format++;
-	if (*p->format != 'h' && *p->format != 'l' && *p->format != 'L')
+	(p->lf & L_LLO || p->lf & L_HH) && p->format++;
+	if (*p->format != 'h' && *p->format != 'l'
+			&& *p->format != 'L' && *p->format != 'j' && *p->format != 'z')
 		return (0);
 	p->lf = ((*p->format == 'h') && *(p->format + 1) != 'h')
 			? p->lf |= L_H : p->lf;
@@ -74,12 +75,13 @@ static int		pr_len_fl(t_printf *p)
 			? p->lf |= L_LLO : p->lf;
 	p->lf = (*p->format == 'L') ? p->lf |= L_L : p->lf;
 	p->lf = (*p->format == 'j') ? p->lf |= L_J : p->lf;
+	p->lf = (*p->format == 'z') ? p->lf |= L_Z : p->lf;
 	return (1);
 }
 
 static int		pr_input_con(t_printf *p)
 {
-	if (!(ft_strchr("cspdiuxXf", *p->format)))
+	if (!(ft_strchr("cspdiuxXfoiU", *p->format)))
 		return (0);
 	p->con = (*p->format == 'c') ? p->con |= CN_C : p->con;
 	p->con = (*p->format == 's') ? p->con |= CN_S : p->con;
@@ -88,8 +90,10 @@ static int		pr_input_con(t_printf *p)
 	p->con = (*p->format == 'i') ? p->con |= CN_I : p->con;
 	p->con = (*p->format == 'u') ? p->con |= CN_U : p->con;
 	p->con = (*p->format == 'f') ? p->con |= CN_F : p->con;
+	p->con = (*p->format == 'o') ? p->con |= CN_O : p->con;
 	p->con = (*p->format == 'X') ? p->con |= CN_UX : p->con;
 	p->con = (*p->format == 'x') ? p->con |= CN_LX : p->con;
+	p->con = (*p->format == 'U') ? p->con |= CN_UU : p->con;
 	return (1);
 }
 
@@ -102,6 +106,6 @@ int				pr_conversion(t_printf *p)
 	while (pr_len_fl(p))
 		p->format++;
 	if (!pr_input_con(p))
-		return (0);
+		return (check_mod(p));
 	return (1);
 }

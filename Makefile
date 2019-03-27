@@ -13,6 +13,7 @@ PF_SRC = printf.c \
 		 pr_output.c \
 		 pr_integer.c \
 		 pr_uninteger.c \
+		 pr_double.c \
 
 LIBFT_SRC = ft_bzero.c \
 			ft_isdigit.c \
@@ -37,6 +38,7 @@ LIBFT_SRC = ft_bzero.c \
 			ft_putuintmax.c \
 			ft_count_digit.c \
 			ft_itoa_base.c \
+			ft_int_pow.c \
 
 SRC = $(addprefix $(SRC_DIR), $(PF_SRC))
 LIBFT = $(addprefix $(LIB_DIR), $(LIBFT_SRC))

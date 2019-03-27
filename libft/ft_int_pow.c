@@ -1,34 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa_base.c                                     :+:      :+:    :+:   */
+/*   ft_int_pow.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jchiang- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/01 14:37:50 by jchiang-          #+#    #+#             */
-/*   Updated: 2019/03/23 19:44:18 by jchiang-         ###   ########.fr       */
+/*   Created: 2019/03/26 15:31:09 by jchiang-          #+#    #+#             */
+/*   Updated: 2019/03/26 15:42:56 by jchiang-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_itoa_base(int c, int base, int len, uintmax_t nb)
+intmax_t	ft_int_pow(intmax_t x, intmax_t y)
 {
-	char	*b;
-	char	*s;
+	intmax_t	r;
 
-	if (base < 2 || base > 16)
+	if (x == 0)
 		return (0);
-	s = ft_strnew(len);
-	b = ft_strnew(16);
-	(c == 1) ? (ft_strcpy(b, "0123456789ABCDEF"))
-		: (ft_strcpy(b, "0123456789abcdef"));
-	s[len] = '\0';
-	while (--len >= 0)
+	if (y == 0)
+		return (1);
+	r = 1;
+	while (y > 0)
 	{
-		s[len] = b[nb % base];
-		nb = nb / base;
+		r = r * x;
+		y--;
 	}
-	ft_strdel(&b);
-	return (s);
+	return (r);
 }

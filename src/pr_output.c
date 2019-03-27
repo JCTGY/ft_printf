@@ -6,7 +6,7 @@
 /*   By: jchiang- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 09:11:41 by jchiang-          #+#    #+#             */
-/*   Updated: 2019/03/22 10:33:18 by jchiang-         ###   ########.fr       */
+/*   Updated: 2019/03/27 12:18:54 by jchiang-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,9 @@ int				pr_output(t_printf *p)
 				va_arg(p->va, void *), 16, p));
 	(p->con & CN_UU) && (printf_uninbr((uintmax_t)
 				va_arg(p->va, unsigned long), 10, p));
+	((p->con & CN_F) && (!(p->lf) || (p->lf & L_LO))) &&
+		printf_double(p, va_arg(p->va, double));
+	((p->con & CN_F) && (p->lf & L_L)) &&
+		printf_double(p, va_arg(p->va, long double));
 	return (1);
 }
